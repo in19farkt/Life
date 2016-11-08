@@ -221,4 +221,70 @@ describe('reducer', () => {
         }));
     });
 
+    it('STEP корректно рассчитывает следующее поколение', () => {
+        const initialState = fromJS({
+            size: {
+                width: 5,
+                height: 5
+            },
+            cells: [
+                [undefined, true, undefined, undefined, undefined],
+                [undefined, undefined, true, undefined, undefined],
+                [true, true, true, undefined, undefined],
+                [undefined, undefined, undefined, undefined, undefined],
+                [undefined, undefined, undefined, undefined, undefined]
+            ]
+        });
+        let action = actionCreators.step();
+        let nextState = reducer(initialState, action);
+
+        expect(nextState).to.equal(fromJS({
+            size: {
+                width: 5,
+                height: 5
+            },
+            cells: [
+                [false, false, false, false, false],
+                [true, false, true, false, false],
+                [false, true, true, false, false],
+                [false, true, false, false, false],
+                [false, false, false, false, false]
+            ]
+        }));
+
+        action = actionCreators.step();
+        nextState = reducer(nextState, action);
+
+        expect(nextState).to.equal(fromJS({
+            size: {
+                width: 5,
+                height: 5
+            },
+            cells: [
+                [false, false, false, false, false],
+                [false, false, true, false, false],
+                [true, false, true, false, false],
+                [false, true, true, false, false],
+                [false, false, false, false, false]
+            ]
+        }));
+
+        action = actionCreators.step();
+        nextState = reducer(nextState, action);
+
+        expect(nextState).to.equal(fromJS({
+            size: {
+                width: 5,
+                height: 5
+            },
+            cells: [
+                [false, false, false, false, false],
+                [false, true, false, false, false],
+                [false, false, true, true, false],
+                [false, true, true, false, false],
+                [false, false, false, false, false]
+            ]
+        }));
+    });
+
 });

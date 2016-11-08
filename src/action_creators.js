@@ -13,8 +13,23 @@ export function changeSizeY(height) {
 }
 
 export function start() {
+    return (dispatch, getStore) => {
+
+        dispatch({ type: 'START' });
+
+        let timer = setTimeout(function tick() {
+
+            dispatch(step());
+
+            if (getStore().get('isStarted'))
+                timer = setTimeout(tick, 400);
+        }, 400);
+    }
+}
+
+export function step() {
     return {
-        type: 'START'
+        type: 'STEP'
     }
 }
 

@@ -1,1 +1,3 @@
-console.log('I am alive!');
+import makeStore from './store';
+
+export const store = makeStore();
