@@ -164,16 +164,16 @@ h1 {
 /* font-family: "LatoBlack"; */
 @font-face {
   font-family: "LatoBlack";
-  src: url(/src/fonts/LatoBlack/LatoBlack.eot);
-  src: url(/src/fonts/LatoBlack/LatoBlack.eot?#iefix) format("embedded-opentype"), url(/src/fonts/LatoBlack/LatoBlack.woff) format("woff"), url(/src/fonts/LatoBlack/LatoBlack.ttf) format("truetype");
+  src: url(./src/fonts/LatoBlack/LatoBlack.eot);
+  src: url(./src/fonts/LatoBlack/LatoBlack.eot?#iefix) format("embedded-opentype"), url(./src/fonts/LatoBlack/LatoBlack.woff) format("woff"), url(./src/fonts/LatoBlack/LatoBlack.ttf) format("truetype");
   font-style: normal;
   font-weight: normal;
 }
 /* font-family: "SourceSansProRegular"; */
 @font-face {
   font-family: "SourceSansProRegular";
-  src: url(/src/fonts/SourceSansProRegular/SourceSansProRegular.eot);
-  src: url(/src/fonts/SourceSansProRegular/SourceSansProRegular.eot?#iefix) format("embedded-opentype"), url(/src/fonts/SourceSansProRegular/SourceSansProRegular.woff) format("woff"), url(/src/fonts/SourceSansProRegular/SourceSansProRegular.ttf) format("truetype");
+  src: url(./src/fonts/SourceSansProRegular/SourceSansProRegular.eot);
+  src: url(./src/fonts/SourceSansProRegular/SourceSansProRegular.eot?#iefix) format("embedded-opentype"), url(./src/fonts/SourceSansProRegular/SourceSansProRegular.woff) format("woff"), url(./src/fonts/SourceSansProRegular/SourceSansProRegular.ttf) format("truetype");
   font-style: normal;
   font-weight: normal;
 }
