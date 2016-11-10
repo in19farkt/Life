@@ -1,2 +1,181 @@
+/***** Variables *****/
+/***** Styles *****/
+.button {
+  position: relative;
+  display: inline-block;
+  padding-top: 0px;
+  padding-bottom: 3px;
+  color: #4eb7a8;
+  vertical-align: bottom;
+}
+.button button {
+  outline: none;
+  cursor: pointer;
+  width: 100%;
+  padding: 8.5px 33.5px;
+  font-size: 1.04rem;
+  background-color: #4eb7a8;
+  border-radius: 3px;
+  border: 1px solid #4eb7a8;
+  box-shadow: 0px 3px 0px 0px #28a290;
+  font-family: LatoBlack;
+  color: #fff;
+  text-transform: uppercase;
+  vertical-align: middle;
+  text-align: center;
+}
+.button_small button {
+  padding: 4.5px 17.5px;
+  font-size: 0.87rem;
+}
+.button_error {
+  color: #e75735;
+}
+.button_error button {
+  background-color: #e75735;
+  border-color: #e75735;
+  box-shadow: 0px 3px 0px 0px #bf3e1f;
+}
+.button_pressed {
+  padding-bottom: 0px;
+  padding-top: 3px;
+}
+.button_pressed button {
+  box-shadow: none;
+}
+.button.button_inverted button {
+  background-color: #fff;
+  color: inherit;
+}
+.js-button__ripple-effect {
+  position: absolute;
+  border-radius: 50%;
+  width: 1px;
+  height: 1px;
+  background: #fafafa;
+  z-index: 1;
+  animation: ripple-animation 1s;
+}
+@-moz-keyframes ripple-animation {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(50);
+    opacity: 0;
+  }
+}
+@-webkit-keyframes ripple-animation {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(50);
+    opacity: 0;
+  }
+}
+@-o-keyframes ripple-animation {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(50);
+    opacity: 0;
+  }
+}
+@keyframes ripple-animation {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(50);
+    opacity: 0;
+  }
+}
+.control-panel {
+  display: flex;
+  justify-content: center;
+}
+.control-panel > *:not(:first-child) {
+  margin-left: 1%;
+}
+.control-panel input {
+  background-color: #e5e5e5;
+  color: #888;
+  font-size: 1.2rem;
+  font-family: SourceSansProRegular;
+  padding: 0 1rem;
+  border: none;
+  border-radius: 0.3rem;
+}
+.game-board {
+  margin-top: 1%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.game-board__cell {
+  background-color: #888;
+  border-radius: 5%;
+  padding: 0.7%;
+  transition: transform 0.5s, z-index 0.5s;
+}
+.game-board__cell::after {
+  content: '';
+  display: block;
+  padding-top: 100%;
+  border-radius: 3%;
+  background-color: #e5e5e5;
+  transition: background-color 0.2s;
+}
+.game-board__cell_is-live::after {
+  background-color: #4eb7a8;
+}
+.game-board__cell:hover {
+  z-index: 100;
+  transform: scale(1.1);
+}
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+html {
+  font-size: 12px;
+}
+body {
+  padding: 3% 0;
+}
+h1 {
+  font-family: LatoBlack;
+  text-transform: uppercase;
+  font-size: 1.67rem;
+  padding: 20px;
+}
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+/***** Fonts *****/
+/* font-family: "LatoBlack"; */
+@font-face {
+  font-family: "LatoBlack";
+  src: url(/src/fonts/LatoBlack/LatoBlack.eot);
+  src: url(/src/fonts/LatoBlack/LatoBlack.eot?#iefix) format("embedded-opentype"), url(/src/fonts/LatoBlack/LatoBlack.woff) format("woff"), url(/src/fonts/LatoBlack/LatoBlack.ttf) format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+/* font-family: "SourceSansProRegular"; */
+@font-face {
+  font-family: "SourceSansProRegular";
+  src: url(/src/fonts/SourceSansProRegular/SourceSansProRegular.eot);
+  src: url(/src/fonts/SourceSansProRegular/SourceSansProRegular.eot?#iefix) format("embedded-opentype"), url(/src/fonts/SourceSansProRegular/SourceSansProRegular.woff) format("woff"), url(/src/fonts/SourceSansProRegular/SourceSansProRegular.ttf) format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
 
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibWFpbi5jc3MiLCJzb3VyY2VzIjpbXSwibWFwcGluZ3MiOiIiLCJzb3VyY2VSb290IjoiIn0=*/
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibWFpbi5jc3MiLCJzb3VyY2VzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OyIsInNvdXJjZVJvb3QiOiIifQ==*/
