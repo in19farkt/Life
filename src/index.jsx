@@ -11,12 +11,16 @@ import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import makeStore from './store';
 import {ControlPanelContainer} from './components/Control-panel/Control-panel.jsx';
+import {GameBoardContainer} from './components/Game-board/Game-board.jsx'
 
 export const store = makeStore();
 
 ReactDOM.render(
     <Provider store={store}>
-        <ControlPanelContainer />
+        <div>
+            <ControlPanelContainer/>
+            <GameBoardContainer/>
+        </div>
     </Provider>,
     document.getElementsByClassName('app')[0]
 );

@@ -1,0 +1,26 @@
+.game-board
+  margin-top 1%
+  display flex
+  flex-wrap wrap
+
+  &__cell
+    background-color #888888
+    border-radius 5%
+    padding 0.7%
+    transition transform 0.5s, z-index 0.5s
+
+
+    &::after
+      content ''
+      display block
+      padding-top 100%
+      border-radius 3%
+      background-color #e5e5e5
+      transition background-color 0.2s
+
+    &_is-live::after
+      background-color color-first
+
+    &:hover
+      z-index 100
+      transform scale(1.1)
