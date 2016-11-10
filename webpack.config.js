@@ -1,6 +1,7 @@
 
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: [
@@ -23,6 +24,9 @@ module.exports = {
         }, {
             test: /\.styl$/,
             loader: ExtractTextPlugin.extract('css!stylus?resolve url') //!autoprefixer?browsers=last 2 versions'
+        }, {
+            test: /\.(png|jpg|svg|ttf|eot|woff|woff2)$/,
+            loader: 'file?name=[path][name].[ext]'
         }]
     },
 
@@ -47,6 +51,7 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin(),
         new ExtractTextPlugin('[name].css', {allChunks: true}),
+        new HtmlWebpackPlugin({filename: 'index.html', template: './src/index.html'}),
         new webpack.ProvidePlugin({
             $: 'jquery'
         })
