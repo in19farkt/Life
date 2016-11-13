@@ -1,32 +1,43 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
-import * as actionCreators from '../../action_creators';
-import {connect} from 'react-redux';
 import classNames from 'classnames';
 
 
-// options.text - текст
-// options.size - размер ('', 'small')
-// options.type - тип ('', 'error')
-// options.isInverted - инвертирование цвета (bool)
-// options.onClick - обработчик нажатия
-// options.isDisabled - состояние кнопки (bool)
-export const Button = React.createClass({
-    mixins: [PureRenderMixin],
-    render: function () {
-        let options = this.props.options || {};
+class Button extends React.Component {
+    constructor(props) {
+        super(props);
+        this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
+    }
 
+    static propTypes = {
+        text: React.PropTypes.string,       // текст
+        size: React.PropTypes.string,       // размер ('', 'small')
+        type: React.PropTypes.string,       // тип ('', 'error')
+        isInverted: React.PropTypes.bool,   // инвертирование цвета (bool)
+        isDisabled: React.PropTypes.bool,   // обработчик нажатия
+        onClick: React.PropTypes.func       // состояние кнопки (bool)
+    };
+
+    static defaultProps = {
+        text: 'Button',
+        isDisabled: false,
+        onClick: () => {}
+    };
+
+    render() {
         return <div
             className={classNames(
                 'button',
-                options.type ? 'button_' + options.type : '',
-                options.size ? 'button_' + options.size : '',
-                options.isInverted ? 'button_inverted' : ''
+                this.props.type ? 'button_' + this.props.type : '',
+                this.props.size ? 'button_' + this.props.size : '',
+                this.props.isInverted ? 'button_inverted' : ''
             )}
-            onClick={() => options.onClick ? options.onClick() : undefined}>
-            <button disabled={options.isDisabled || false}>
-                {options.text || 'Button'}
+            onClick={() => this.props.onClick()}>
+            <button disabled={this.props.isDisabled}>
+                {this.props.text}
             </button>
         </div>
     }
-});
+}
+
+export {Button};

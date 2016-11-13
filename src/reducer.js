@@ -141,10 +141,9 @@ function step(state) {
                 if (numberLivingAround[y][x] == 2 || numberLivingAround[y][x] == 3)
                     numberLivingAround[y][x] = true;
                 else numberLivingAround[y][x] = false;
-            else
-                if (numberLivingAround[y][x] == 3)
-                    numberLivingAround[y][x] = true;
-                else numberLivingAround[y][x] = false;
+            else if (numberLivingAround[y][x] == 3)
+                numberLivingAround[y][x] = true;
+            else numberLivingAround[y][x] = false;
         }
 
     return state.merge(fromJS({'cells': numberLivingAround}));

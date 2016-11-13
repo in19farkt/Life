@@ -2,30 +2,41 @@ import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import * as actionCreators from '../../action_creators';
 import {connect} from 'react-redux';
-import classNames from 'classnames';
 import {Button} from '../Button/Button.jsx'
 
-export const ControlPanel = React.createClass({
-    mixins: [PureRenderMixin],
-    buttonIsDisabled: function() {
+class ControlPanel extends React.Component {
+    constructor(props) {
+        super(props);
+        this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
+    }
+
+    static propTypes = {
+        width: React.PropTypes.number,
+        height: React.PropTypes.number,
+        isStarted: React.PropTypes.bool
+    };
+
+    buttonIsDisabled() {
         return !(this.props.width && this.props.height && this.props.width >= 3 && this.props.height >=3)
-    },
-    isNumeric: function (n) {
+    }
+
+    isNumeric(n) {
         return !isNaN(parseFloat(n)) && isFinite(n);
-    },
-    render: function () {
+    }
+
+    render() {
         return <div className="control-panel">
             {this.props.isStarted ?
-                <Button options={{
+                <Button {...{
                     text: 'pause',
                     onClick: this.props.pause,
                     isDisabled: this.buttonIsDisabled()}}/> :
-                <Button options={{
+                <Button {...{
                     text: 'start',
                     onClick: this.props.start,
                     isDisabled: this.buttonIsDisabled()}}/>}
 
-            <Button options={{
+            <Button {...{
                 text: 'clear',
                 onClick: this.props.clear,
                 isDisabled: this.buttonIsDisabled()}}/>
@@ -49,7 +60,7 @@ export const ControlPanel = React.createClass({
 
         </div>;
     }
-});
+}
 
 function mapStateToProps(state) {
     return {
@@ -59,7 +70,10 @@ function mapStateToProps(state) {
     }
 }
 
-export const ControlPanelContainer = connect(
+const ControlPanelContainer = connect(
     mapStateToProps,
     actionCreators
 )(ControlPanel);
+
+export default ControlPanelContainer;
+export {ControlPanel};

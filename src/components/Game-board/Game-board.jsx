@@ -3,11 +3,26 @@ import PureRenderMixin from 'react-addons-pure-render-mixin';
 import * as actionCreators from '../../action_creators';
 import {connect} from 'react-redux';
 import classNames from 'classnames';
+import IPropTypes from 'immutable-props';
+import {fromJS} from 'immutable';
 
-export const GameBoard = React.createClass({
-    mixins: [PureRenderMixin],
+class GameBoard extends React.Component {
+    constructor(props) {
+        super(props);
+        this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
+    }
 
-    getCellStyle: function () {
+    static propTypes = {
+        width: React.PropTypes.number,
+        height: React.PropTypes.number,
+        cells: IPropTypes.List
+    };
+
+    static defaultProps = {
+        cells: fromJS([[]])
+    };
+
+    getCellStyle() {
         let flexBasis = 100 / this.props.width;
         let margin = flexBasis / 100;
         flexBasis -= 2 * margin;
@@ -16,34 +31,35 @@ export const GameBoard = React.createClass({
             flexBasis: flexBasis + '%',
             margin: margin + '%'
         }
-    },
+    }
 
-    getCells: function () {
+    getCells() {
         let cells = [];
         let style = this.getCellStyle();
-        for (let y = 0; y < this.props.height; y++) {
-            for (let x = 0; x < this.props.width; x++) {
+
+        this.props.cells.map((row, y) => {
+            row.map((cell, x) => {
                 cells.push(
                     <div className={classNames(
-                            'game-board__cell',
-                            this.props.cells.getIn([y, x]) ? 'game-board__cell_is-live' : '')}
+                        'game-board__cell',
+                        cell ? 'game-board__cell_is-live' : '')}
                          onClick={() => this.props.invertCell(x, y)}
                          style={style}
                          key={x + '_' + y}
                     ></div>
                 )
-            }
-        }
+            })
+        });
 
         return cells;
-    },
+    }
 
-    render: function () {
+    render() {
         return <div className="game-board">
             {this.getCells()}
         </div>
     }
-});
+}
 
 function matStateToProps(state) {
     return {
@@ -53,7 +69,10 @@ function matStateToProps(state) {
     }
 }
 
-export const GameBoardContainer = connect(
+const GameBoardContainer = connect(
     matStateToProps,
     actionCreators
 )(GameBoard);
+
+export default GameBoardContainer;
+export {GameBoard};
