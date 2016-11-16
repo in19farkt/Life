@@ -1,4 +1,6 @@
 
+const NODE_ENV = process.env.NODE_ENV || 'development';
+
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -40,7 +42,7 @@ module.exports = {
         filename: 'bundle.js'
     },
 
-    devtool: 'cheap-inline-module-source-map',
+    devtool: NODE_ENV == 'development' ? "cheap-inline-module-source-map" : null,
 
     devServer: {
         contentBase: './public',

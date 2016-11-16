@@ -6,7 +6,7 @@
   color color-first
   vertical-align bottom
 
-  & button
+  &__element
     outline none
     cursor pointer
     width 100%
@@ -22,43 +22,25 @@
     vertical-align middle
     text-align center
 
-  &_small button
+  &_small &__element
     padding 4.5px 17.5px
     font-size 0.87rem
 
   &_error
     color color-second
 
-    & button
-      background-color color-second
-      border-color color-second
-      box-shadow 0px 3px 0px 0px color-second-dark
+  &_error &__element
+    background-color color-second
+    border-color color-second
+    box-shadow 0px 3px 0px 0px color-second-dark
 
   &_pressed
     padding-bottom 0px
     padding-top 3px
 
-    & button
-      box-shadow none
+  &_pressed &__element
+    box-shadow none
 
-  &.button_inverted button
+  &.button_inverted &__element
     background-color white
     color inherit
-
-.js-button__ripple-effect
-  position absolute
-  border-radius 50%
-  width 1px
-  height 1px
-  background #fafafa
-  z-index 1
-  animation ripple-animation 1s
-
-@keyframes ripple-animation
-  from
-    transform scale(1)
-    opacity 1
-
-  to
-    transform scale(50)
-    opacity 0
