@@ -1,54 +1,53 @@
 export function changeSizeX(width) {
-    return {
-        type: 'CHANGE_SIZE_X',
-        width
-    }
+  return {
+    type: 'CHANGE_SIZE_X',
+    width,
+  };
 }
 
 export function changeSizeY(height) {
-    return {
-        type: 'CHANGE_SIZE_Y',
-        height
-    }
+  return {
+    type: 'CHANGE_SIZE_Y',
+    height,
+  };
 }
 
 export function start() {
-    return (dispatch, getStore) => {
+  return (dispatch, getStore) => {
+    dispatch({ type: 'START' });
 
-        dispatch({ type: 'START' });
+    let timer = setTimeout(function tick() {
+      dispatch(step());
 
-        let timer = setTimeout(function tick() {
-
-            dispatch(step());
-
-            if (getStore().get('isStarted'))
-                timer = setTimeout(tick, 400);
-        }, 400);
-    }
+      if (getStore().get('isStarted')) {
+        timer = setTimeout(tick, 400);
+      }
+    }, 400);
+  };
 }
 
 export function step() {
-    return {
-        type: 'STEP'
-    }
+  return {
+    type: 'STEP',
+  };
 }
 
 export function pause() {
-    return {
-        type: 'PAUSE'
-    }
+  return {
+    type: 'PAUSE',
+  };
 }
 
 export function clear() {
-    return {
-        type: 'CLEAR'
-    }
+  return {
+    type: 'CLEAR',
+  };
 }
 
 export function invertCell(x, y) {
-    return {
-        type: 'INVERT_CELL',
-        x: x,
-        y: y
-    }
+  return {
+    type: 'INVERT_CELL',
+    x,
+    y,
+  };
 }
